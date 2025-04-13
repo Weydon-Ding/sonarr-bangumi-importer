@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  sonarr-list:
+    build: .
+    container_name: sonarr-bangumi-importer
+    restart: unless-stopped
+    ports:
+      - "8990:8990"
+    volumes:
+      - ./app/config.yaml:/app/config.yaml
+      - data_volume:/data
+    environment:
+      - TZ=Asia/Shanghai
+
+volumes:
+  data_volume:
